@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  flask1:
+    build:
+      context: ./flask
+    expose:
+      - "5000"
+    networks:
+      - internal
+
+  flask2:
+    build:
+      context: ./flask2
+    expose:
+      - "5000"
+    networks:
+      - internal
+
+  flask3:
+    build:
+      context: ./flask3
+    expose:
+      - "5000"
+    networks:
+      - internal
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - external
+      - internal
+
+networks:
+  internal:
+  external:
+
